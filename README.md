@@ -1,1 +1,1 @@
-# HumanBenchmarkAI
+# HB-typing

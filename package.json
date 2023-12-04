@@ -1,0 +1,21 @@
+{
+  "name": "hb-typing",
+  "version": "1.0.0",
+  "description": "Automate Human Benchmark type test",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx tsc && ./dist/test.js",
+    "start": "npx tsc && node ./dist/index.js"
+  },
+  "author": "Gpaul | Faldin",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "@nut-tree/nut-js": "^3.1.2",
+    "dotenv": "^16.3.1",
+    "jimp": "^0.22.10",
+    "tesseract.js": "^5.0.3"
+  }
+}
