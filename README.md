@@ -10,10 +10,10 @@ Human Benchmark offers cognitive challenges for measuring and enhancing human pe
 
 Explore the various challenges and their corresponding AI implementations:
 
-1. **Aim Trainer**
-2. **Chimp Test**
-5. **Typing Speed**
-   <!-- Add more challenges as needed -->
+1. **[Aim Trainer](https://humanbenchmark.com/tests/aim)**
+2. **[Chimp Test](https://humanbenchmark.com/tests/chimp)**
+3. **[Typing Speed](https://humanbenchmark.com/tests/typing)**
+4. **[Sequence Test](https://humanbenchmark.com/tests/sequence)**
 
 ## Branches
 
@@ -22,6 +22,7 @@ Each challenge has a dedicated branch. Switch to a specific branch to explore th
 - [Aim Trainer](https://github.com/gpaul-faldin/HumanBenchmarkAI/tree/AimTrainer)
 - [Chimp test](https://github.com/gpaul-faldin/HumanBenchmarkAI/tree/Chimp)
 - [Typing](https://github.com/gpaul-faldin/HumanBenchmarkAI/tree/Typing)
+- [Sequence](https://github.com/gpaul-faldin/HumanBenchmarkAI/tree/Sequence)
 
 ## Work in Progress
 
