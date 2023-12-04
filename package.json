@@ -1,0 +1,25 @@
+{
+  "name": "hb-aimtrainer",
+  "version": "1.0.0",
+  "description": "Human Benchmark aimtrainer module use openCv and nut.js",
+  "main": "index.js",
+  "scripts": {
+    "install_arm64": "build-opencv --version 4.5.4 --flag=\"-DCMAKE_SYSTEM_PROCESSOR=arm64 -DCMAKE_OSX_ARCHITECTURES=arm64\" build",
+    "install_4.5.5_cuda": "build-opencv --version 4.5.5 --flags=\"-DWITH_CUDA=ON -DWITH_CUDNN=ON -DOPENCV_DNN_CUDA=ON -DCUDA_FAST_MATH=ON\" build",
+    "do-install": "build-opencv rebuild",
+    "start": "npx ts-node src/index.ts",
+    "test": "npx ts-node src/test.ts"
+  },
+  "author": "Gpaul | Faldin",
+  "license": "ISC",
+  "dependencies": {
+    "@nut-tree/nut-js": "^3.1.2",
+    "@u4/opencv-build": "^0.7.8",
+    "@u4/opencv4nodejs": "^6.5.2",
+    "robotjs": "^0.6.0",
+    "tesseract.js": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.2"
+  }
+}
