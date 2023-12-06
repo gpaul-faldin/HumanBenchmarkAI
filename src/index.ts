@@ -117,7 +117,7 @@ function createSquaresMatrice(img: Bitmap, width: number, rectangles: Array<Arra
       //END: X: 1200 Y: 705
 
       for (let Y = y + 60; Y < y + height; Y += info.size + info.space) {
-        for (let X = x + info.start; X < x + width; X += info.size) {
+        for (let X = x; X < x + width; X += info.size) {
           moveMouse(X, Y);
           if (!isDuplicate(rectanglesToClick, { x: X, y: Y }) && img.colorAt(X - x, Y - y) === 'ffffff') {
             rectanglesToClick.push({ x: X, y: Y })
