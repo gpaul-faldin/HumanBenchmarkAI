@@ -4,8 +4,8 @@
   "description": "Human Benchmark verbal memory using tesseract.js and robot.js",
   "main": "index.js",
   "scripts": {
-    "test": "npx tsc && ./dist/test.js",
-    "start": "npx tsc && node ./dist/index.js"
+    "test": "npx ts-node ./src/test.ts",
+    "start": "npx ts-node ./src/index.ts"
   },
   "author": "Gpaul | Faldin",
   "license": "ISC",

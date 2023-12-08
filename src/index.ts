@@ -24,10 +24,10 @@ const readScreenshot = async (path: string): Promise<string> => {
 
 (async () => {
   setMouseDelay(0);
-  const x = 425;
-  const y = 420;
-  const width = 575;
-  const height = 80;
+  const x = 395;
+  const y = 400;
+  const width = 1200 - x;
+  const height = 550 - y;
   var score = 0;
   mouse.config.autoDelayMs = 0;
   mouse.config.mouseSpeed = 0;
@@ -54,51 +54,59 @@ const readScreenshot = async (path: string): Promise<string> => {
   var lastWord = "";
   var newLevel = false;
 
+  //230,395 TOP LEFT BOX
+  //1200,515 BOT RIGHT BOX
+  //656,536  SUBMIT
+  //666,589 START
+  //662,597 NEXT
+
   while (true) {
     if (getPixelColor(545, 755) !== "e6e8f3") {
       console.log("Screen no longer alligned");
-      console.log(history);
       process.exit(0);
     }
-    if (newLevel === true && lastWord === "") {
-      const scoreRegion = new Region(
-        scoreInfo.x,
-        scoreInfo.y,
-        scoreInfo.width,
-        scoreInfo.height
-      );
-      await nutScreen.captureRegion("./score.png", scoreRegion);
-      console.log("Score: " + (await readScreenshot("./score.png")));
-      const lvlStr = (await readScreenshot("./score.png")).split("Score | ")[1];
-      if (Number(lvlStr) !== score) {
-        score = Number(lvlStr);
-        console.log("Level: " + lvlStr);
-        newLevel = false;
-      }
-    }
-    if (!newLevel) {
-      newLevel = true;
-      const region = new Region(x, y, width, height);
-      await nutScreen.captureRegion("./screenshot.png", region);
-      lastWord = await readScreenshot("./screenshot.png");
-    } else if (newLevel === true && lastWord !== "") {
-      if (history.includes(lastWord)) {
-        let points = new Point(Buttons.seen.x, Buttons.seen.y);
-        await mouse.setPosition(points).then(async () => {
-          await mouse.click(Button.LEFT).then(() => {
-            lastWord = "";
-          });
-        });
-      } else {
-        let points = new Point(Buttons.new.x, Buttons.new.y);
-        await mouse.setPosition(points).then(async () => {
-          await mouse.click(Button.LEFT).then(() => {
-            history.push(lastWord);
-            lastWord = "";
-          });
-        });
-      }
-    }
-    await new Promise((resolve) => setTimeout(resolve, 1));
+    // if (newLevel === true && lastWord === "") {
+    //   const scoreRegion = new Region(
+    //     scoreInfo.x,
+    //     scoreInfo.y,
+    //     scoreInfo.width,
+    //     scoreInfo.height
+    //   );
+    //   await nutScreen.captureRegion("./score.png", scoreRegion);
+    //   console.log("Score: " + (await readScreenshot("./score.png")));
+    //   const lvlStr = (await readScreenshot("./score.png")).split("Score | ")[1];
+    //   if (Number(lvlStr) !== score) {
+    //     score = Number(lvlStr);
+    //     console.log("Level: " + lvlStr);
+    //     newLevel = false;
+    //   }
+    // }
+    // if (!newLevel) {
+    //   newLevel = true;
+    //   const region = new Region(x, y, width, height);
+    //   await nutScreen.captureRegion("./screenshot.png", region);
+    //   lastWord = await readScreenshot("./screenshot.png");
+    // } else if (newLevel === true && lastWord !== "") {
+    //   if (history.includes(lastWord)) {
+    //     let points = new Point(Buttons.seen.x, Buttons.seen.y);
+    //     await mouse.setPosition(points).then(async () => {
+    //       await mouse.click(Button.LEFT).then(() => {
+    //         lastWord = "";
+    //       });
+    //     });
+    //   } else {
+    //     let points = new Point(Buttons.new.x, Buttons.new.y);
+    //     await mouse.setPosition(points).then(async () => {
+    //       await mouse.click(Button.LEFT).then(() => {
+    //         history.push(lastWord);
+    //         lastWord = "";
+    //       });
+    //     });
+    //   }
+    // }
+    const region = new Region(x, y, width, height);
+    await nutScreen.captureRegion(`./screenshot_${score}.png`, region);
+    score++;
+    await new Promise((resolve) => setTimeout(resolve, 30));
   }
 })();
