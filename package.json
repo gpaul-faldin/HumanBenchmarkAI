@@ -1,0 +1,23 @@
+{
+  "name": "verbal-mem",
+  "version": "1.0.0",
+  "description": "Human Benchmark verbal memory using tesseract.js and robot.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx tsc && ./dist/test.js",
+    "start": "npx tsc && node ./dist/index.js"
+  },
+  "author": "Gpaul | Faldin",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "@nut-tree/nut-js": "^3.1.2",
+    "dotenv": "^16.3.1",
+    "jimp": "^0.22.10",
+    "robotjs": "^0.6.0",
+    "tesseract.js": "^5.0.3"
+  }
+}
