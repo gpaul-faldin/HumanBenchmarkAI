@@ -32,7 +32,7 @@ Each challenge has a dedicated branch. Switch to a specific branch to explore th
 - [Typing](https://github.com/gpaul-faldin/HumanBenchmarkAI/tree/Typing)
 - [Verbal Memory](https://github.com/gpaul-faldin/HumanBenchmarkAI/tree/VerbalMem)
 
-## Work finished
+## Finished Project
 
 The project is finished on my side, the code is not perfect and most of the loops need's to be done cleanly but I can get 100% in all of the challenges and I'm fine with it :)
 
