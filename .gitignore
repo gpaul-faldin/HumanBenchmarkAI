@@ -2,3 +2,5 @@ dist
 node_modules
 eng.traineddata
 *.png
+package-lock.json
+
