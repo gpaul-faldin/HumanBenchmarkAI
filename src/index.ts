@@ -1,39 +1,39 @@
-import { mouseClick, setMouseDelay, moveMouse, screen } from 'robotjs';
-process.env.OPENCV4NODEJS_DISABLE_EXTERNAL_MEM_TRACKING = "1"
+import {mouseClick, moveMouse, screen, setMouseDelay} from 'robotjs';
 import * as cv from '@u4/opencv4nodejs';
+
+process.env.OPENCV4NODEJS_DISABLE_EXTERNAL_MEM_TRACKING = "1"
 
 function processImage(img: cv.Mat): number[] {
 
   //const regionImg = img.getRegion(region);
   const grayImg = img.cvtColor(cv.COLOR_BGR2GRAY);
   const circles = grayImg.houghCircles(
-    cv.HOUGH_GRADIENT, 1, 20, 20, 45, 20, 80
+      cv.HOUGH_GRADIENT, 1, 20, 20, 45, 20, 80
   );
 
   if (circles && circles.length > 0) {
-    for (let i = 0; i < circles.length; i++) {
-      const circle = circles[i];
-      const x = circle.x;
-      const y = circle.y;
-      const centralPixelColor = grayImg.at(y, x);
 
-      if (centralPixelColor > 120) {
-       return [x, y];
-      } else if (centralPixelColor === 116) {
+    const circle = circles[0];
+    const x = circle.x;
+    const y = circle.y;
+    const centralPixelColor = grayImg.at(y, x);
+
+    if (centralPixelColor > 120) {
+      return [x, y];
+    } else if (centralPixelColor === 116) {
       return [-1, -1];
-      }
-      else {
-        return [-2, -2];
-      }
+    } else {
+      return [-2, -2];
     }
+
   }
   return [-1, -1];
 }
 
 function processVideo() {
   const delay = 3;
-  var lastX = 0;
-  var lastY = 0;
+  let lastX = 0;
+  let lastY = 0;
 
   setMouseDelay(0);
 
